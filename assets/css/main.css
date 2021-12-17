@@ -1347,7 +1347,7 @@ button {
 
 			#header nav ul li a {
 				display: block;
-				min-width: 5rem;  /* changed from 7.5rem so publications button fits */
+				min-width: 10rem;  /* changed from 7.5rem so publications button fits */
 				height: 2.75rem;
 				line-height: 2.75rem;
 				padding: 0 1.25rem 0 1.45rem;
