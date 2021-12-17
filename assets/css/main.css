@@ -1098,6 +1098,7 @@ button {
 	-ms-transform: scale(1.0);
 	transform: scale(1.0);
 	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -1346,7 +1347,7 @@ button {
 
 			#header nav ul li a {
 				display: block;
-				min-width: 10rem; /* fixes button size issue */
+				min-width: 10rem;  /* changed from 7.5rem so publications button fits */
 				height: 2.75rem;
 				line-height: 2.75rem;
 				padding: 0 1.25rem 0 1.45rem;
