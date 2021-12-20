@@ -690,7 +690,6 @@ input[type="radio"] + label:before {
 
 		.image.main img {
 			width: 100%;
-			opacity: 1;
 		}
 
 	@media screen and (max-width: 736px) {
