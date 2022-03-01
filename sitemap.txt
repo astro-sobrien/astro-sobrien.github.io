@@ -1,7 +1,3 @@
 https://astro-sobrien.github.io/
-https://astro-sobrien.github.io/#about
-https://astro-sobrien.github.io/#research
-https://astro-sobrien.github.io/#publications
-https://astro-sobrien.github.io/#outreach
-https://astro-sobrien.github.io/#contact
 https://astro-sobrien.github.io/mscthesis_gif.html
+https://astro-sobrien.github.io/sitemap.txt
