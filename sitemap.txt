@@ -1,3 +1,4 @@
 https://astro-sobrien.github.io/
 https://astro-sobrien.github.io/mscthesis_gif.html
+https://astro-sobrien.github.io/gretzky.html
 https://astro-sobrien.github.io/sitemap.txt
