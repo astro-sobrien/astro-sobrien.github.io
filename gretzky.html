@@ -82,11 +82,23 @@
 							</h3>
 						</center>
 
-						<h2 style="text-decoration: none;"><a id="intro">Introduction</a></h2>
+						<h2><a id="intro">Introduction</a></h2>
 						<p>What if Wayne Gretzky never scored a goal? We all know the headline stat. If Wayne Gretzky never scored a goal in his career, he’d still have more points (goals plus assists) than any other player in NHL history. The Great One had 1,963 assists (and 894 goals) in his 21-year career while the next-highest points scorer is Jaromír Jágr with 766 goals and 1,155 assists for a measly 1,921 points. But what difference would a goalless Gretzky have on his season-to-season accolades and how would it affect his teams’ chances of making the playoffs and winning the Stanley Cup?</p>
 
 						<h2><a id="methodology">Methodology</a></h2>
-						<p>Methodology TL;DR: We subtract Gretzky’s goals from every game he played, if this results in a tie we simulate overtime. If a playoff series is incomplete, we simulate entire games. We implement <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a> to determine the most likely outcomes of each season.</p>
+						<p><u>Methodology TL;DR:</u> We subtract Gretzky’s goals from every game he played, if this results in a tie we simulate overtime. If a playoff series is incomplete, we simulate entire games. We implement <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a> to determine the most likely outcomes of each season.</p>
+						<p>Calculating the changes in Gretzky’s accolades is simple, as are the changes to Edmonton’s regular season record in the first 4 seasons of Gretzky’s career, since the NHL did not use sudden-death overtime. Simulating these seasons is simply a case of subtracting Gretzky’s goals from each game, checking the new results and editing each team’s overall records accordingly.</p>
+						<p>For example, on November 21 1979, the Edmonton Oilers tied 4-4 with the Toronto Maple Leafs. However, Wayne Gretzky scored 2 goals in this game so we subtract these from Edmonton’s score and now the Maple Leafs have a 4-2 victory. Pretend for a moment that no other results in the 79-80 season were affected by Gretzky’s lack of goals and we’d change Edmonton’s 28-39-13 record (Wins-Losses-Ties) to 28-40-12 while Toronto now have a 36-40-4 record.</p>
+						<p>
+							In the 1983-84 season, however, the NHL introduced a sudden-death overtime period for the regular season. If, after the 5-minute period, no goals were scored then the game would still end as a tie, it wouldn’t be until 2005 before the NHL introduced the shootout to settle every game. The introduction of overtime poses a problem for our simulations as if, for example, Gretzky scored 2 goals in regular time and his team won by 2, then this game is now a tie after 60 minutes! In this scenario, we will simulate overtime with 4 possible outcomes:
+							<ul>
+								<li>Tie</li>
+								<li>Win for the opposing team</li>
+								<li>Win for Gretzky’s team where the game-winning goal (GWG) is scored by a teammate</li>
+								<li>Win for Gretzky’s team where the GWG is scored by Wayne Gretzky</li>
+							</ul>
+							We can’t allow this final outcome since our Gretzky can’t score, therefore we will simply re-run the overtime simulation until we achieve an allowable result. The probabilities for each of these outcomes are found by calculating how frequently each scenario occurred in real overtimes played by Wayne Gretzky in his career.
+						</p>
 
 
 
