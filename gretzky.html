@@ -85,87 +85,11 @@
 					
 
                     <article style="background-color: black; font-size: 14pt;">
-						<p>
-							What if Wayne Gretzky never scored a goal? We all know the headline stat. If Wayne Gretzky never scored a goal in his career, he’d still have more points (goals plus assists) than any other player in NHL history. The Great One had 1,963 assists (and 894 goals) in his 21-year career while the next-highest points scorer is Jaromír Jágr with 766 goals and 1,155 assists for a measly 1,921 points. But what difference would a goalless Gretzky have on his season-to-season accolades and how would it affect his teams’ chances of making the playoffs and winning the Stanley Cup?
-						</p>
-						<p>
-							Calculating the changes in Gretzky’s accolades is simple, as are the changes to Edmonton’s regular season record in the first 4 seasons of Gretzky’s career, since the NHL did not use sudden-death overtime. Simulating these seasons is simply a case of subtracting Gretzky’s goals from each game, checking the new results and editing each team’s overall records accordingly.
-						</p>
+						<h2>Introduction</h2>
+						<p>What if Wayne Gretzky never scored a goal? We all know the headline stat. If Wayne Gretzky never scored a goal in his career, he’d still have more points (goals plus assists) than any other player in NHL history. The Great One had 1,963 assists (and 894 goals) in his 21-year career while the next-highest points scorer is Jaromír Jágr with 766 goals and 1,155 assists for a measly 1,921 points. But what difference would a goalless Gretzky have on his season-to-season accolades and how would it affect his teams’ chances of making the playoffs and winning the Stanley Cup?</p>
 
-						<!-- <article>
-							<img src="images/gretzky_images/combined_8384_dark_background.jpeg" style="max-width:100%; height:auto;">
-						</article> -->
-
-						<!-- <style type="text/css">
-							.tg  {border-collapse:collapse;border-spacing:0;}
-							.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14pt;
-							  overflow:hidden;padding:10px 5px;word-break:normal;}
-							.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14pt;
-							  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-							.tg .tg-0usf{background-color:#000000;border-color:#ffffff;color:#ffffff;text-align:center;vertical-align:top;white-space:nowrap;}
-							</style>
-							<table class="tg">
-							<thead>
-							  <tr>
-								<th class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Rank (Previous)</span></th>
-								<th class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Player</span></th>
-								<th class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Goals</span></th>
-								<th class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Assists</span></th>
-								<th class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Points</span></th>
-							  </tr>
-							</thead>
-							<tbody>
-							  <tr>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">1 (3)</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Michael Goulet</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">56</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">66</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">122</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2 (4)</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Peter Stastny</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">46</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">73</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">119</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">3 (5)</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Mike Bossy</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">51</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">67</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">118</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">4 (1)</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Wayne Gretzky</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">0 (87)</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">118</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">118 (205)</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">5 (6)</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Barry Pederson</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">39</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">77</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">116</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">…</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">…</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">…</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">…</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">…</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">10 (2)</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Paul Coffey</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">40</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">58 (86)</span></td>
-								<td class="tg-0usf"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">98 (126)</span></td>
-							  </tr>
-							</tbody>
-							</table> -->
+						<h2>Methodology</h2>
+						<p>Methodology TL;DR: We subtract Gretzky’s goals from every game he played, if this results in a tie we simulate overtime. If a playoff series is incomplete, we simulate entire games. We implement <q><a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a></q> to determine the most likely outcomes of each season.</p>
 
 						<style type="text/css">
 							.tg  {border-collapse:collapse;border-spacing:0;}
