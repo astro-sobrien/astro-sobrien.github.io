@@ -97,6 +97,20 @@
 							<li>Win for Gretzky’s team where the GWG is scored by Wayne Gretzky</li>
 						</ul>
 						<p>We can’t allow this final outcome since our Gretzky can’t score, therefore we will simply re-run the overtime simulation until we achieve an allowable result. The probabilities for each of these outcomes are found by calculating how frequently each scenario occurred in real overtimes played by Wayne Gretzky in his career.</p>
+						<p style="margin-bottom: 0;">Across his career, the team Gretzky played for competed in 219 overtimes:</p>
+						<ul style="padding-left: 5rem; margin-bottom: 0;">
+							<li>148 of these ended in ties (67.6%)</li>
+							<li>25 ended in wins for the opposition (11.4%)</li>
+							<li>42 ended in wins for Edmonton with the GWG scored by a teammate (19.2%)</li>
+							<li>4 ended in a win for Edmonton with Gretzky scoring the game-winning goal (1.8%)</li>
+						</ul>
+						<p style="margin-bottom: 0;">These set our probabilities for simulating overtime. Now let’s consider the November 5th 1985 game between Edmonton and the Vancouver Canucks. This game finished 6-4 to Edmonton but Gretzky scored two of their goals therefore this game has now finished 4-4 after 60 minutes. We simulate overtime by generating a random number between 0 and 1000 and comparing this to a series of thresholds set by the probabilities above. Call this random number N, then the final result is determined as follows:</p>
+						<ul style="padding-left: 5rem;">
+							<li>0<&leq;N&leq;676 &rarr; Tie (i.e. there’s a 676/1000 = 67.6% chance of a tie)</li>
+							<li>676&lt;N&leq;790 &rarr; Win for Vancouver (i.e. there’s a (790-676)/1000 = 114/1000 = 11.4% chance of a Vancouver win)</li>
+							<li>790&lt;N&leq;982 &rarr; Win for Edmonton</li>
+							<li>982&lt;N&leq;1000 &rarr; Simulate OT again as Gretzky “scored”</li>
+						</ul>
 
 						
 
