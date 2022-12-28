@@ -111,6 +111,15 @@
 							<li>790&lt;N&leq;982 &rarr; Win for Edmonton</li>
 							<li>982&lt;N&leq;1000 &rarr; Simulate OT again as Gretzky “scored”</li>
 						</ul>
+						<p>Similarly, if the goalless Gretzky leads his team to the playoffs, then we have to apply a similar idea to resolve any games finishing as ties after 60 minutes. The only difference here is that we no longer allow a Tie to occur at all.</p>
+						<p>In addition to simulating overtimes, if we flip a Win into a Loss due to Gretzky’s goal drought in a playoff series that was ultimately won by Wayne’s team, we now have to simulate entire games to finish the series off. The idea for this is the same as simulating overtime and is best explained with the following example:</p>
+						<p style="padding-left: 5rem; margin-bottom: 0;">In 1984, the Edmonton Oilers swept the Minnesota North Stars in the best-of-seven Clarence Campbell Conference Final. The Oilers won Game One 7-1, Gretzky had only 1 goal so this remains a win for Edmonton. In Game Two, the Oilers won 4-3 but if we remove the game-winning goal that Gretzky scored then this is a 3-3 tie and we have to simulate overtime. Let’s assume that the overtime simulation produced a win for Minnesota, so now the series is tied at 1-1. Games 3 and 4 still go the way of Edmonton and they have a 3-1 lead over Minnesota but now we’re left with an incomplete series and no more real games to manipulate. Therefore we calculate the probability that Edmonton will win the next game by taking their win percentage in the series so far, 3 wins out of 4 for a 75% win percentage. Once again we generate a random number, N, between 0 and 1000 and determine the outcome as follows:</p>
+						<ul style="padding-left: 10rem; margin-bottom: 0;">
+							<li>0<&leq;N&leq;750 &rarr; Win for Edmonton</li>
+							<li>750&lt;N&leq;1000 &rarr; Win for Minnesota</li>
+						</ul>
+						<p style="padding-left: 5rem;">Let’s imagine that luck isn’t in Edmonton’s favour, the random number is greater than 750 and so the North Stars win Game 5. Now we must simulate Game 6 with a newly-generated Edmonton win percentage: 3 wins out of 5 for a 66.7% win percentage. We’ll end the example here by imagining the random number generated is less than 667 and so the Edmonton Oilers win the series 4-2 and advance to the Stanley Cup Final.</p>
+						<p>Now given that we are simulating seasons with an element of random chance, we can’t just simulate a season once and take the results from that simulation. Otherwise, we could have a statistically unlikely season where, despite Gretzky’s lack of goals, the Oilers might still win every overtime and every playoff game that has to be randomly decided. In order to counter this, we’ll employ a technique called &#8220;<a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a>&#8221; where we’ll simulate each season 1000 times and find the average outcome of all those simulations.</p>
 
 						
 
