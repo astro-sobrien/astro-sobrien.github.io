@@ -80,18 +80,19 @@
                     <article style="background-color: black; font-size: 14pt; padding: 2rem;">
 						<center>
 							<h3>
-								<a href="#intro">Introduction</a>-<a href="#methodology">Methodology</a>-<a href="#seasonbyseason">Season-by-Season</a>-<a href="#summarysection">Summary</a>
+								<a href="#intro">Introduction</a>-<a href="#methodology">Methodology</a>-<a href="#interestingseasons">Interesting Seasons</a>-<a href="#summarysection">Summary</a>-<a href="#appendix">Appendix</a>
 							</h3>
 						</center>
 
 						<h2><a id="intro">Introduction</a></h2>
-						<p>What if Wayne Gretzky never scored a goal? We all know the headline statistic. If Wayne Gretzky never scored a goal in his career, he’d still have more points (goals plus assists) than any other player in NHL history. The Great One had 1,963 assists (and 894 goals) in his 21-year career while the next-highest points scorer is Jaromír Jágr with 766 goals and 1,155 assists for a measly 1,921 points. But what difference would a goalless Gretzky have on his season-to-season accolades and how would it affect his teams’ chances of making the playoffs and winning the Stanley Cup?</p>
+						<p>What if Wayne Gretzky never scored a goal? We all know the headline stat. If Wayne Gretzky never scored a goal in his career, he’d still have more points (goals plus assists) than any other player in NHL history. The Great One had 1,963 assists (and 894 goals) in his career while the next highest points scorer is Jaromír Jágr with 766 goals and 1,155 assists for a measly 1,921 points. But what difference would a goalless Gretzky have on his season-to-season accolades and how would it affect his teams’ chances of making the playoffs and winning the Stanley Cup?</p>
 
 						<h2><a id="methodology">Methodology</a></h2>
-						<p><b><u>Methodology TL;DR:</u> We subtract Gretzky’s goals from every game he played, if this results in a tie we simulate overtime. If a playoff series is incomplete, we simulate entire games. We implement “<a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a>” to determine the most likely outcomes of each season.</b></p>
-						<p>Calculating the changes in Gretzky’s accolades is simple, as are the changes to Edmonton’s regular season record in the first 4 seasons of Gretzky’s career, since the NHL did not use sudden-death overtime. Simulating these seasons is simply a case of subtracting Gretzky’s goals from each game, checking the new results and editing each team’s overall records accordingly.</p>
+						<p><b><u>Methodology summary:</u>In this piece, we’ll subtract Gretzky’s goals from every game he played and edit the season standings accordingly. If Gretzky’s goal drought results in a tie, then we simulate overtime. Similarly, if a playoff series is incomplete due to results being flipped from wins to losses, we will simulate entire games. In order to determine the most likely outcomes of each season, we implement “<a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a>” which allows us to generate a statistically significant sample size of “Goalless Gretzky” seasons.</b></p>
+						<p><a href="#interestingseasons">(Skip ahead to results)</a></p>
+						<p><u>Methodology detail:</u>Calculating the changes in Gretzky’s statistical accolades is simple, the <a href="https://en.wikipedia.org/wiki/Art_Ross_Trophy">Art Ross Trophy</a> will be the main focus. It’s also straightforward to determine the changes to Edmonton’s regular season record in the first 4 seasons of Gretzky’s career, since the NHL did not use sudden-death overtime to break ties. Simulating these seasons is simply a case of subtracting Gretzky’s goals from each game, checking the new results and editing each team’s overall records accordingly.</p>
 						<p>For example, on November 21 1979, the Edmonton Oilers tied 4-4 with the Toronto Maple Leafs. However, Wayne Gretzky scored 2 goals in this game so we subtract these from Edmonton’s score and now the Maple Leafs have a 4-2 victory. Pretend for a moment that no other results in the 79-80 season were affected by Gretzky’s lack of goals and we’d change Edmonton’s 28-39-13 record (Wins-Losses-Ties) to 28-40-12 while Toronto now have a 36-40-4 record.</p>
-						<p style="margin-bottom: 0.5rem;">In the 1983-84 season, however, the NHL introduced a sudden-death overtime period for the regular season. If, after the 5-minute period, no goals were scored then the game would still end as a tie, it wouldn’t be until 2005 before the NHL introduced the shootout to settle every game. The introduction of overtime poses a problem for our simulations as if, for example, Gretzky scored 2 goals in regular time and his team won by 2, then this game is now a tie after 60 minutes! In this scenario, we will simulate overtime with 4 possible outcomes:</p>
+						<p style="margin-bottom: 0.5rem;">In the 1983-84 season, however, the NHL introduced a sudden-death overtime period for the regular season. If, after the 5-minute period, no goals were scored then the game would still end as a tie, it wouldn’t be until 2005 before the NHL introduced the shootout to settle every game. The introduction of overtime poses a problem for our simulations as if, for example, Gretzky scored 2 goals in regular time and his team won by 2, then this game is now a tie after 60 minutes. In this scenario, we will simulate overtime with 4 possible outcomes:</p>
 						<ul style="padding-left: 5rem; margin-bottom: 0.5rem;">
 							<li>Tie</li>
 							<li>Win for the opposing team</li>
@@ -99,21 +100,21 @@
 							<li>Win for Gretzky’s team where the GWG is scored by Wayne Gretzky</li>
 						</ul>
 						<p>We can’t allow this final outcome since our Gretzky can’t score, therefore we will simply re-run the overtime simulation until we achieve an allowable result. The probabilities for each of these outcomes are found by calculating how frequently each scenario occurred in real overtimes played by Wayne Gretzky in his career.</p>
-						<p style="margin-bottom: 0.5rem;">Across his career, the team Gretzky played for competed in 219 overtimes:</p>
+						<p style="margin-bottom: 0.5rem;">Across his career, the team Gretzky played for competed in 221 regular season overtimes:</p>
 						<ul style="padding-left: 5rem; margin-bottom: 0.5rem;">
-							<li>148 of these ended in ties (67.6%)</li>
-							<li>25 ended in wins for the opposition (11.4%)</li>
-							<li>42 ended in wins for Gretzky’s team with the GWG scored by a teammate (19.2%)</li>
-							<li>4 ended in a win for Gretzky’s team with Gretzky scoring the game-winning goal (1.8%)</li>
+							<li>152 of these ended in ties (68.8%)</li>
+							<li>25 ended in wins for the opposition (11.3%)</li>
+							<li>42 ended in wins for Gretzky’s team with the GWG scored by a teammate (19.0%)</li>
+							<li>2 ended in a win for Gretzky’s team with Gretzky scoring the game-winning goal (0.9%)</li>
 						</ul>
-						<p style="margin-bottom: 0.5rem;">These set our probabilities for simulating overtime. Now let’s consider the November 5th 1985 game between Edmonton and the Vancouver Canucks. This game finished 6-4 to Edmonton but Gretzky scored two of their goals therefore this game has now finished 4-4 after 60 minutes. We simulate overtime by generating a random number between 0 and 1000 and comparing this to a series of thresholds set by the probabilities above. Call this random number N, then the final result is determined as follows:</p>
+						<p style="margin-bottom: 0.5rem;">These set our probabilities for simulating overtime. Now let’s consider the November 5th 1985 game between the Edmonton Oilers and the Vancouver Canucks. This game finished 6-4 to Edmonton but Gretzky scored two of their goals; therefore, this game has now finished 4-4 after 60 minutes. We simulate overtime by generating a random number between 0 and 1000 and comparing this to a series of thresholds set by the probabilities above. Call this random number N, then the final result is determined as follows:</p>
 						<ul style="padding-left: 5rem;">
-							<li>0<&leq;N&leq;676 &rarr; Tie (i.e. there’s a 676/1000 = 67.6% chance of a tie)</li>
-							<li>676&lt;N&leq;790 &rarr; Win for Vancouver (i.e. there’s a (790-676)/1000 = 114/1000 = 11.4% chance of a Vancouver win)</li>
-							<li>790&lt;N&leq;982 &rarr; Win for Edmonton</li>
-							<li>982&lt;N&leq;1000 &rarr; Simulate OT again as Gretzky “scored”</li>
+							<li>0<&leq;N&leq;688 &rarr; Tie (i.e. there’s a 688/1000 = 68.8% chance of a tie)</li>
+							<li>688&lt;N&leq;801 &rarr; Win for Vancouver (i.e. there’s a (801-688)/1000 = 113/1000 = 11.3% chance of a Vancouver win)</li>
+							<li>801&lt;N&leq;991 &rarr; Win for Edmonton</li>
+							<li>991&lt;N&leq;1000 &rarr; Simulate OT again as Gretzky “scored”</li>
 						</ul>
-						<p>Similarly, if the goalless Gretzky leads his team to the playoffs, then we have to apply a similar idea to resolve any games finishing as ties after 60 minutes. The only difference here is that we no longer allow a Tie to occur at all.</p>
+						<p>Similarly, if the goalless Gretzky leads his team to the playoffs, then we have to apply a similar idea to resolve any games finishing as ties after 60 minutes. The differences here are that: we no longer allow a Tie to occur; and we use probabilities based on playoff games decided by overtime that Gretzky played in (Win-Loss-Gretzky GWG = 16-18-4).</p>
 						<p>In addition to simulating overtimes, if we flip a Win into a Loss due to Gretzky’s goal drought in a playoff series that was ultimately won by Wayne’s team, we now have to simulate entire games to finish the series off. The idea for this is the same as simulating overtime and is best explained with the following example:</p>
 						<p style="padding-left: 5rem; padding-right:5rem; margin-bottom: 0.5rem;">In 1984, the Edmonton Oilers swept the Minnesota North Stars in the best-of-seven Clarence Campbell Conference Final. The Oilers won Game One 7-1, Gretzky had only 1 goal so this remains a win for Edmonton. In Game Two, the Oilers won 4-3 but if we remove the game-winning goal that Gretzky scored then this is a 3-3 tie and we have to simulate overtime. Let’s assume that the overtime simulation produced a win for Minnesota, so now the series is tied at 1-1. Games 3 and 4 still go the way of Edmonton and they have a 3-1 lead over Minnesota but now we’re left with an incomplete series and no more real games to manipulate. Therefore we calculate the probability that Edmonton will win the next game by taking their win percentage in the series so far, 3 wins out of 4 for a 75% win percentage. Once again we generate a random number, N, between 0 and 1000 and determine the outcome as follows:</p>
 						<ul style="padding-left: 10rem; margin-bottom: 0.5rem;">
@@ -121,44 +122,44 @@
 							<li>750&lt;N&leq;1000 &rarr; Win for Minnesota</li>
 						</ul>
 						<p style="padding-left: 5rem; padding-right:5rem;">Let’s imagine that luck isn’t in Edmonton’s favour, the random number is greater than 750 and so the North Stars win Game 5. Now we must simulate Game 6 with a newly-generated Edmonton win percentage: 3 wins out of 5 for a 66.7% win percentage. We’ll end the example here by imagining the random number generated is less than 667 and so the Edmonton Oilers win the series 4-2 and advance to the Stanley Cup Final.</p>
-						<p>Now given that we are simulating seasons with an element of random chance, we can’t just simulate a season once and take the results from that simulation. Otherwise, we could have a statistically unlikely season where, despite Gretzky’s lack of goals, the Oilers might still win every overtime and every playoff game that has to be randomly decided. In order to counter this, we’ll employ a technique called &#8220;<a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a>&#8221; where we’ll simulate each season 1000 times and find the average outcome of all those simulations.</p>
+						<p>Now given that we are simulating seasons with an element of random chance, we can’t just simulate a season once and take the results from that simulation. Otherwise, we could have a statistically unlikely season where, despite Gretzky’s lack of goals, the Oilers might still win every overtime and every playoff game that has to be randomly decided. In order to counter this, we’ll employ a technique called “<a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a>” where we’ll simulate each season 1000 times and find the average outcome of all those simulations.</p>
 
 						
 
 
 
-						<h2><a id="seasonbyseason">Season-by-Season</a></h2>
+						<h2><a id="interestingseasons">Interesting Seasons</a></h2>
 						<center>
 							<h3>
 								<a href="#s80" style="white-space:nowrap;">79-80</a> <a href="#s81" style="white-space:nowrap;">80-81</a> <a href="#s82" style="white-space:nowrap;">81-82</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s83">82-83</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s84">83-84</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s85">84-85</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s86">85-86</a> <a href="#s87" style="white-space:nowrap;">86-87</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s88">87-88</a> <a href="#s89" style="white-space:nowrap;">88-89</a> <a href="#s90" style="white-space:nowrap;">89-90</a> <a href="#s91" style="white-space:nowrap;">90-91</a> <a href="#s92" style="white-space:nowrap;">91-92</a> <a href="#s93" style="white-space:nowrap;">92-93</a> <a href="#s94" style="white-space:nowrap;">93-94</a> <a href="#s95" style="white-space:nowrap;">94-95</a> <a href="#s96" style="white-space:nowrap;">95-96</a> <a href="#s97" style="white-space:nowrap;">96-97</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s98">97-98</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s99">98-99</a><br><a href="#summarysection">Summary</a> 
 							</h3>
 						</center>
-						<p>The links above can be used to skip to a given season or the summary. The most interesting seasons are highlighted.</p>
+						<p>The links above can be used to skip to a given season or the summary. The most interesting seasons that are included in the main text below are highlighted.</p>
 
 						<h3>
 							<a id="s80">1979-80 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 						<p><u>Real season:</u> The Edmonton Oilers had a 28-39-13 record to finish 4th in the Smythe Division. They made the playoffs but lost 3-0 to the Philadelphia Flyers in the preliminary round. Gretzky had 51	goals and 86 assists for 137 points to tie with Marcel Dionne for the league lead in points but Dionne won the Art Ross due to having two more goals than Gretzky.</p>
 						<p><u>Goalless Gretzky:</u> The Oilers drop to a 24-46-10 record for a final points total of 58 and a 19th place finish in the league. They miss the playoffs, finishing 15th best of the non-Division winners and the Washington Capitals instead take their place. Marcel Dionne comfortably wins the Art Ross by 12 points over Guy Lafleur. Wayne Gretzky’s 86 points are enough for a 19th place finish. A quick glance shows 86 points would give him 20th spot but we also have to remove the 19 times Blair MacDonald assisted Wayne, dropping MacDonald down to 32nd place.</p>
 
 						<h3>
 							<a id="s81">1980-81 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 						<p><u>Real season:</u> The Oilers had a 29-35-16 record to finish 4th in the Smythe once again. They made the playoffs where they swept the Montreal Canadiens 3-0 in the Preliminary Round before losing 4-2 to the New York Islanders in the Quarterfinals. The Great One had 55 goals and 109 assists to win the Art Ross by 29 points over Marcel Dionne.</p>
 						<p><u>Goalless Gretzky:</u> Edmonton slump to 27-43-10 and miss the playoffs again, finishing 6 points behind the Capitals for the final playoff place. Marcel Dionne wins a second Art Ross by 4 points over Kent Nilsson while Gretzky finishes in 6th place.</p>
 
 						<h3>
 							<a id="s82">1981-82 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 						<p><u>Real season:</u> Edmonton topped the Smythe with a 48-18-15 record before losing 3-2 to the LA Kings in the best-of-five Division Semifinals. Wayne Gretzky had the first of his four 200-point seasons and had his best goal haul with 92 goals and 120 assists for 212 points to walk away with the Art Ross Trophy.</p>
 						<p><u>Goalless Gretzky:</u> The Oil maintain a winning record of 35-28-17 and stay top of the Smythe Division by 9 points over the now tied Canucks and Flames. In his first taste of playoff hockey, Gretzky faces the LA Kings who have an easier job dispatching of the Oilers as The Great One doesn’t score the OT game winner in Game Two. This means that the Kings have a chance to win the series in 4 games, although they’re still guaranteed to advance regardless. In the Art Ross race, Mike Bossy wins the trophy while Gretzky has his first top 5 finish.</p>
 						
 						<h3>
 							<a id="s83">1982-83 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 						<p><u>Real season:</u> The Oilers topped the Smythe Division with a 47-21-12 record and made it all the way to the Stanley Cup Final where they were swept by the Islanders. Gretzky won his 3rd consecutive Art Ross by 72 points over Peter Stastny.</p>
 						<p><u>Goalless Gretzky:</u> The Oilers retain their dominance of the Smythe, finishing with a 42-29-9 record and making the playoffs. In 164 of our simulations, the Winnipeg Jets got the better of the Oilers in the Division Semifinals. This is due to Gretzky’s four-goal Game One being flipped to a 3-2 win for the Jets, allowing the series to go to a Game Four and potentially Game Five which if won by the Jets means they take the series. In the other 836 simulations the Oilers have no trouble reaching the Stanley Cup Final. Despite another 4 goal performance for Gretzky against Calgary in Game 3 of the Division Finals, this remains a 6-2 victory for Edmonton instead of the 10-2 blowout it was in real life. Similarly against the Chicago Blackhawks, Gretzky posted 10 assists in 4 games so even without scoring the Oilers progress easily. In the Stanley Cup Final Gretzky went goalless in real life and of course does the same here, but this is the closest our goalless Gretzky has got to Lord Stanley’s Mug so far.</p>
@@ -172,7 +173,7 @@
 
 						<h3>
 							<a id="s84">1983-84 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 						<p><u>Real season:</u> This is where things start to get more interesting as the NHL introduced a 5-minute overtime period in the regular season which we’ll have to simulate if the Oilers tie as a result of Gretzky’s goal drought. This will also be an interesting test of the simulations as this is the first year Gretzky won the Stanley Cup! The Oilers posted a 57-18-5 record to top the Smythe with 119 points before sweeping the Division Semifinals against the Jets, winning a Game 7 decider against the Flames, sweeping the Minnesota North Stars in the Conference Finals and beating the Islanders 4-1 to lift the cup. Gretzky won the Art Ross with 205 points to his teammate Paul Coffey’s 126.</p>
 						<p style="margin-bottom: 0;"><u>Goalless Gretzky:</u> It’s time for some graphs! The histograms on the left show the points total of Gretzky’s team in each of the 1000 simulations and whether they made the playoffs (as an orange outline). On the right, this shows which round of the playoffs Gretzky’s team reached before elimination, with the orange outline showing in how many simulations they won the Stanley Cup.  From now on, when I say “average,” I’ll be quoting the median regular season points total for Gretzky’s team. In our simulations, the Oilers averaged 90 points which drops them from 1st to 9th in the overall NHL standings but they still remain atop the Smythe and comfortably make the playoffs in every simulation. For the sake of more accurate simulations, we’ll imagine that the Oilers’ playoff opponents are the same in the simulations as they were in reality, since we can continue manipulating real game results rather than simulating an entire postseason.</p>
@@ -258,7 +259,7 @@
 
 						<h3>
 							<a id="s85">1984-85 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 						<p><u>Real season:</u> The Edmonton Oilers go 49-20-11 for 109 points, they top the Smythe and once again win the Stanley Cup. Wayne wins the Art Ross with 208 points to Jari Kurri’s 135.</p>
 						<p style="margin-bottom: 0;"><u>Goalless Gretzky:</u> The average simulation has a final total of 88 points for the Oilers. They drop to 3rd or 4th in the Smythe but are always comfortably above the 5th-placed Canucks who finished with only 59 points in the real season, meaning that the Oilers still make the playoffs every time.</p>
@@ -280,7 +281,7 @@
 
 						<h3>
 							<a id="s86">1985-86 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 						<p><u>Real season:</u> The Edmonton Oilers win the inaugural Presidents’ Trophy with 119 points then sweep the Canucks in the Division Semi-Finals before losing in Game Seven to the Flames after Steve Smith banked the puck off his own goaltender. Gretzky wins the Art Ross with his highest career total of 215 points to Mario Lemieux’s 141.</p>
 						<p style="margin-bottom: 0;"><u>Goalless Gretzky:</u> The Oilers average 105 points meaning that they don’t hold onto the Presidents’ Trophy. Nonetheless, the Oilers make the playoffs in every simulation. Just like real life, Edmonton sweep the Canucks but are beaten by the Flames in the Division Finals.</p>
@@ -293,7 +294,7 @@
 
 						<h3>
 							<a id="s87">1986-87 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 						<p><u>Real season:</u> The Edmonton Oilers win another Presidents’ Trophy with 106 points and go all the way in the playoffs, winning another Stanley Cup. The Great One wins another Art Ross with 183 points ahead of a tight race for 2nd between Jari Kurri, Mario Lemieux and Mark Messier who finish with 108, 107 and 107 points respectively.</p>
 						<p style="margin-bottom: 0;"><u>Goalless Gretzky:</u> The Oilers average 88 points and lose their grip on the Smythe Division but still make the playoffs in every scenario. Gretzky had a quiet playoff run for goals in the real 1987 and this is reflected as the Oilers make the Stanley Cup Finals in every simulation. Once again they face the Philadelphia Flyers but Gretzky’s missing goal in Game Two flips this from a 3-2 OT Edmonton win to a 2-1 Flyers win and Philadelphia win the Cup in 6 games.</p>
@@ -306,7 +307,7 @@
 
 						<h3>
 							<a id="s88">1987-88 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 						<p><u>Real season:</u> Wayne Gretzky missed 20% of the season through injury but the Oilers managed 99 points to finish 2nd in the Smythe Division. They then cruised to the Stanley Cup losing only 2 games during the playoffs. Gretzky only managed 64 games and promptly lost the Art Ross to a 22-year-old Mario Lemieux.</p>
 						<p style="margin-bottom: 0;"><u>Goalless Gretzky:</u> The Oilers average 94 points, maintaining their 2nd place in the division. They make the playoffs in every simulation but have a slightly tougher time in the Division Finals against the Flames. Calgary take Game Two 4-3 in the Battle of Alberta as Gretzky’s regular time marker doesn’t count so he doesn’t have the chance to score a short-handed overtime winner that occurred in the real game. This allows the series to go to simulated games 5, 6 and 7 which lets the Flames advance in Edmonton’s place in 48 of our simulations. The Oilers win the Stanley Cup in 929 of the 952 simulations where they make the finals. Game One ends in a 1-1 tie so we have to simulate overtime which gives the Boston Bruins the opportunity to reverse the result and win the cup in 23 of our simulations. Mario Lemieux wins the Art Ross by the extended margin of 37 points over Denis Savard as Gretzky falls away to 6th spot.</p>
@@ -318,57 +319,57 @@
 
 						<h3>
 							<a id="s89">1988-89 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 
 						<h3>
 							<a id="s90">1989-90 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 
 						<h3>
 							<a id="s91">1990-91 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 
 						<h3>
 							<a id="s92">1991-92 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 
 						<h3>
 							<a id="s93">1992-93 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 
 						<h3>
 							<a id="s94">1993-94 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 
 						<h3>
 							<a id="s95">1994-95 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 
 						<h3>
 							<a id="s96">1995-96 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 
 						<h3>
 							<a id="s97">1996-97 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 
 						<h3>
 							<a id="s98">1997-98 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 
 						<h3>
 							<a id="s99">1998-99 season</a>
-							<span style="float:right;"><a href="#seasonbyseason">(back to list of seasons)</a></span>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
 						</h3>
 
 						<h2><a id="summarysection">Summary</a></h2>
@@ -592,6 +593,8 @@
 								<img style="max-width: 100%;height: auto;" src="images/gretzky_images/allseasons_ppg.svg" alt="alt-text">
 							</center>
 						</span>
+
+						<h2><a id="appendix">Appendix</a></h2>
                     </article>
 
 
