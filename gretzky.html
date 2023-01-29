@@ -89,7 +89,11 @@
 
 						<h2><a id="methodology">Methodology</a></h2>
 						<p><b><u>Methodology summary:</u>In this piece, we’ll subtract Gretzky’s goals from every game he played and edit the season standings accordingly. If Gretzky’s goal drought results in a tie, then we simulate overtime. Similarly, if a playoff series is incomplete due to results being flipped from wins to losses, we will simulate entire games. In order to determine the most likely outcomes of each season, we implement “<a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a>” which allows us to generate a statistically significant sample size of “Goalless Gretzky” seasons.</b></p>
-						<p>This work has made extensive use of <a href="https://www.hockey-reference.com/">Hockey Reference</a> and <a href="https://stathead.com/hockey/">Stathead Hockey</a> to gather the data and check various statistics.</p>
+						<p style="background-color: #3166ff">
+							<center>
+								This work has made extensive use of <a href="https://www.hockey-reference.com/">Hockey Reference</a> and <a href="https://stathead.com/hockey/">Stathead Hockey</a> to gather the data and check various statistics.
+							</center>
+						</p>
 						<p><a href="#interestingseasons">(Skip ahead to results)</a></p>
 						<p><u>Methodology detail:</u>Calculating the changes in Gretzky’s statistical accolades is simple, the <a href="https://en.wikipedia.org/wiki/Art_Ross_Trophy">Art Ross Trophy</a> will be the main focus. It’s also straightforward to determine the changes to Edmonton’s regular season record in the first 4 seasons of Gretzky’s career, since the NHL did not use sudden-death overtime to break ties. Simulating these seasons is simply a case of subtracting Gretzky’s goals from each game, checking the new results and editing each team’s overall records accordingly.</p>
 						<p>For example, on <a href="https://www.hockey-reference.com/boxscores/197911210TOR.html">November 21st 1979</a>, the Edmonton Oilers tied 4-4 with the Toronto Maple Leafs. However, Wayne Gretzky scored 2 goals in this game so we subtract these from Edmonton’s score and now the Maple Leafs have a 4-2 victory. Pretend for a moment that no other results in the 79-80 season were affected by Gretzky’s lack of goals and we’d change Edmonton’s 28-39-13 record (Wins-Losses-Ties) to 28-40-12 while Toronto now have a 36-40-4 record.</p>
@@ -129,7 +133,10 @@
 
 
 
-						<h2><a id="interestingseasons">Interesting Seasons</a></h2>
+						<h2>
+							<a id="interestingseasons">Interesting Seasons</a>
+							<span style="float:right;"><a href="#intro">(back to top)</a></span>
+						</h2>
 						<center>
 							<h3>
 								<a href="#s80" style="white-space:nowrap;">79-80</a> <a href="#s81" style="white-space:nowrap;">80-81</a> <a href="#s82" style="white-space:nowrap;">81-82</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s83">82-83</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s84">83-84</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s85">84-85</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s86">85-86</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s87" style="white-space:nowrap;">86-87</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s88">87-88</a> <a href="#s89" style="white-space:nowrap;">88-89</a> <a href="#s90" style="white-space:nowrap;">89-90</a> <a href="#s91" style="white-space:nowrap;">90-91</a> <a href="#s92" style="white-space:nowrap;">91-92</a> <a href="#s93" style="white-space:nowrap;">92-93</a> <a href="#s94" style="white-space:nowrap;">93-94</a> <a href="#s95" style="white-space:nowrap;">94-95</a> <a href="#s96" style="white-space:nowrap;">95-96</a> <a href="#s97" style="white-space:nowrap;">96-97</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s98">97-98</a> <a style="background-color:#3166ff;white-space: nowrap;" href="#s99">98-99</a><br><a href="#summarysection">Summary</a> 
@@ -383,7 +390,10 @@
 						</span>
 						<p>Since Gretzky finished his career, the closest a player has got to his points total is <a href="https://www.hockey-reference.com/players/j/jagrja01.html">Jaromír Jágr</a> with 1,921 points, who reached this mark against the Arizona Coyotes on <a href="https://www.hockey-reference.com/boxscores/201711300CGY.html">30th November 2017</a> (at the age of 45 years and 288 days!). Although following the precedent we’ve set of wiping off goals and assists for overtime periods that never occur, in the goalless Gretzky universe, Jágr will finish his career with 1,920 points as he loses an overtime goal from the <a href="https://www.hockey-reference.com/boxscores/199303110PIT.html">March 11th 1993</a> contest between the Kings and the Penguins. Entering his final season, Gretzky had 1,910 assists, although we’ve knocked off 5 overtime assists so he’s down to 1,905. On <a href="https://www.hockey-reference.com/boxscores/199811190LAK.html">November 19th 1998</a> against his former team the Kings, Gretzky’s assist on Alex Kovalev’s 3rd period goal brings his assist total to Jágr’s new future tally of 1,920 points. Gretzky goes pointless for two games but on <a href="https://www.hockey-reference.com/boxscores/199811270PIT.html">November 27th 1998</a> against Jágr’s Penguins, Gretzky’s 1st period assist sets a marker that is yet to be reached by any other player with goals and assists. Jágr went pointless in this game and it would take another 1,158 points in 1,132 games across 19 years and 3 days until he would come within 1 point of the marker set by Gretzky on this night.</p>
 
-						<h2><a id="summarysection">Summary</a></h2>
+						<h2>
+							<a id="summarysection">Summary</a>
+							<span style="float:right;"><a href="#interestingseasons">(back to list of seasons)</a></span>
+						</h2>
 						<p>Wayne Gretzky finished his career with 1,963 assists which is 42 more than Jaromír Jágr had points. Although we’ve since reduced this to 1,958 assists in our goalless simulations, but he maintains a 37 points lead over Jágr in the all-time list. Gretzky had fifteen 100-point seasons (including four 200-point seasons) out of the 20 seasons he played in the NHL which reduces to eleven 100-point seasons with a career-high of 163 assists in 1985-86. He still wins 4 Art Ross trophies for leading the league in points plus has another 4 top-five finishes. Looking towards the biggest prize, the Edmonton Oilers are guaranteed to lose the 1987 Stanley Cup to the Philadelphia Flyers and lose out in half the simulations for the 1985 final. Astonishingly, despite Gretzky never scoring a goal, the Oilers are still guaranteed to win Lord Stanley’s Mug in 1984 and 1988.</p>
 
 						<style type="text/css">
